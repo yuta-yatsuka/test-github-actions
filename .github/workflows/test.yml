@@ -8,5 +8,16 @@ jobs:
     name: Test
     runs-on: ubuntu-latest
     steps:
-      - name: Git Action Test
-        run: exit 1;
+      - uses: actions/checkout@v2
+      - uses: reviewdog/action-setup@v1
+        with:
+          reviewdog_version: latest
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          tools: composer:v2
+      - name: Resolve dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+      - name: Run PHPstan
+        run: ./code/vendor/bin/phpstan analyse --level 5 ./code/app
