@@ -1,9 +1,12 @@
 name: reviewdog
-on: push
+on:
+  pull_request:
+    branches:
+      - main
 jobs:
   build:
     name: Test
     runs-on: ubuntu-latest
     steps:
       - name: Git Action Test
-        run: exit;
+        run: exit 1;
