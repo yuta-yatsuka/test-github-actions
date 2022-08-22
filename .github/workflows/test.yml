@@ -17,7 +17,11 @@ jobs:
         with:
           php-version: '8.0'
           tools: composer:v2
+      - name: Resolve dependencies
+        run: composer install --no-progress --prefer-dist --optimize-autoloader
+        working-directory: ./code
       - name: Run PHPstan
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./code/vendor/bin/phpstan analyse --level 5 ./code/app
+        run: ./vendor/bin/phpstan analyse --level 5 ./app
+        working-directory: ./code
