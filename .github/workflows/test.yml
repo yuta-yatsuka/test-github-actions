@@ -17,6 +17,9 @@ jobs:
         with:
           php-version: '8.0'
           tools: composer:v2
+      - name: Composer update
+        run: composer update
+        working-directory: ./code
       - name: Resolve dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
         working-directory: ./code
