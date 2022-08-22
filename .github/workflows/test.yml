@@ -17,9 +17,5 @@ jobs:
         with:
           php-version: '8.0'
           tools: composer:v2
-      - name: CD
-        run: cd ./code
-      - name: Resolve dependencies
-        run: composer install --no-progress --prefer-dist --optimize-autoloader
       - name: Run PHPstan
         run: ./code/vendor/bin/phpstan analyse --level 5 ./code/app
