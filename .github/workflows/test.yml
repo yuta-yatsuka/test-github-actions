@@ -19,5 +19,4 @@ jobs:
           tools: composer:v2
       - name: Resolve dependencies
         run: composer install --no-progress --prefer-dist --optimize-autoloader
-      - name: Run PHPstan
-        run: exit 1
+      - run: php test.php
