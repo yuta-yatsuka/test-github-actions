@@ -11,6 +11,7 @@ jobs:
       - uses: reviewdog/action-setup@v1
         with:
           reviewdog_version: latest
+      - run: git branch
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
